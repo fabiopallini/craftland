@@ -41,7 +41,7 @@ public class Render extends Activity implements GLSurfaceView.Renderer
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        render_init(this, R.layout.activity_opengl, R.id.glSurface, 300, 200, true);
+        render_init(this, R.layout.activity_opengl, R.id.glSurface, 300, 169, true);
     }
 
     public void render_init (Activity activity, int layout_id, int glSurface, int w, int h, boolean fullScreen)
