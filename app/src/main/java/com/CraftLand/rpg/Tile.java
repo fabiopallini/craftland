@@ -43,6 +43,7 @@ public class Tile
     public final static byte Grid = -68;
     public final static byte TombStone = -67;
     public final static byte CampFire = -66;
+    public final static byte Exit = 127;
 
     public final static byte _collision[] = {
             Tile.Wall_1,

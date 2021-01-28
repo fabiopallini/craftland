@@ -77,7 +77,8 @@ public class Dig
             id == Tile.TombStone ||
             id == Tile.Pier ||
             id == Tile.Water_header ||
-            id == Tile.Lava_header)
+            id == Tile.Lava_header ||
+            id == Tile.Exit)
                 return false;
         return true;
     }

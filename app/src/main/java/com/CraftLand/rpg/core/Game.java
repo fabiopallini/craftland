@@ -66,7 +66,7 @@ public class Game
         // new game
         player.HP = 3;
         player.HP_MAX = 3;
-        player.setPosInTile(8, 11);
+        player.setPosInTile(12, 9);
         menu.inventory.addItem(Resource.Pickaxe, 1);
         menu.setItemB(Resource.Pickaxe);
         // load
@@ -112,7 +112,7 @@ public class Game
             }
 
             //change map
-            if(tileCollision(player, CollisionDown, Tile.WhiteFlower)) {
+            if(tileCollision(player, 0, Tile.Exit)) {
                 stage.clear();
                 changeMap("Dungeon_1");
             }
@@ -154,6 +154,7 @@ public class Game
         List<TMXObject> objects = tiledReader.getObjects();
         for(TMXObject obj : objects)
             Game.stage.addObject(Game.makeMob(obj.getName(), obj.getX(), obj.getY()));
+        player.setPosInTile(12, 9);
     }
 
     private void cameraFollow(Player player){
@@ -396,25 +397,25 @@ public class Game
             switch (collision) {
                 case CollisionLeft:
                     if (tileMap.getTileValue(e.left() / tileMap.getTileSize(), e.centerY() / tileMap.getTileSize()) == tile
-                            || tileMap.getTileValue(e.left() / tileMap.getTileSize(), e.bottom() / tileMap.getTileSize()) == tile) {
+                            || tileMap.getTileValue(e.left() / tileMap.getTileSize(), e.bottom() / tileMap.getTileSize()) == tile)
                         return true;
-                    }
                     break;
                 case CollisionRight:
                     if (tileMap.getTileValue(e.right() / tileMap.getTileSize(), e.centerY() / tileMap.getTileSize()) == tile
-                            || tileMap.getTileValue(e.right() / tileMap.getTileSize(), e.bottom() / tileMap.getTileSize()) == tile) {
+                            || tileMap.getTileValue(e.right() / tileMap.getTileSize(), e.bottom() / tileMap.getTileSize()) == tile)
                         return true;
-                    }
                     break;
                 case CollisionUp:
-                    if (tileMap.getTileValue(e.centerX() / tileMap.getTileSize(), e.top() / tileMap.getTileSize()) == tile) {
+                    if (tileMap.getTileValue(e.centerX() / tileMap.getTileSize(), e.top() / tileMap.getTileSize()) == tile)
                         return true;
-                    }
                     break;
                 case CollisionDown:
-                    if (tileMap.getTileValue(e.centerX() / tileMap.getTileSize(), (e.bottom() + e.walkSize) / tileMap.getTileSize()) == tile) {
+                    if (tileMap.getTileValue(e.centerX() / tileMap.getTileSize(), (e.bottom() + e.walkSize) / tileMap.getTileSize()) == tile)
                         return true;
-                    }
+                    break;
+                default:
+                    if (tileMap.getTileValue(e.centerX() / tileMap.getTileSize(), (e.centerY() / tileMap.getTileSize())) == tile)
+                        return true;
                     break;
             }
         }
