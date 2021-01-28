@@ -71,7 +71,7 @@ public class Dragon extends Mob {
                     super.update();
                     update_direction((Game.player.centerX() - 64) + (64 * j), Game.player.centerY());
                     if (Collision.pixel(this, Game.player)) {
-                        Game.player.damage(50);
+                        Game.player.damage(10);
                     }
                 }
             };

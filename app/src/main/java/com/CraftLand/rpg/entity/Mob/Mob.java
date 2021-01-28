@@ -86,7 +86,10 @@ public class Mob extends Entity {
                 }
                 hitRedColorDissolve();
                 if (Collision.pixel(this, Game.player)) {
-                    Game.player.damage((int)(HP_MAX * 0.05f));
+                    int dmg = (int)(HP_MAX * 0.05f);
+                    if(dmg <= 0)
+                        dmg = 1;
+                    Game.player.damage(dmg);
                 }
             } else {
                 // on death

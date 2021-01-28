@@ -37,7 +37,7 @@ public class CsvReader
         int size = 0;
         int index = rowIndex(element);
         for (int n = 1; n < lines.size(); n++) {
-            String d[] = lines.get(n).split(",");
+            String d[] = lines.get(n).split(",|;");
             if (d[0].equals(name)) {
                 size++;
             }
@@ -46,9 +46,9 @@ public class CsvReader
         if(size > 0) {
             int k = 0;
             for (int n = 1; n < lines.size(); n++) {
-                String d[] = lines.get(n).split(",");
+                String d[] = lines.get(n).split(",|;");
                 if (d[0].equals(name)) {
-                    String elements[] = lines.get(n).split(",");
+                    String elements[] = lines.get(n).split(",|;");
                     result[k] = elements[index];
                     k++;
                 }
@@ -73,9 +73,9 @@ public class CsvReader
         int index = rowIndex(element);
         if(lines != null && lines.size() > 0) {
             for (int n = 1; n < lines.size(); n++) {
-                String d[] = lines.get(n).split(",");
+                String d[] = lines.get(n).split(",|;");
                 if (d[0].equals(name)) {
-                    String elements[] = lines.get(n).split(",");
+                    String elements[] = lines.get(n).split(",|;");
                     result = elements[index];
                     break;
                 }
@@ -99,7 +99,7 @@ public class CsvReader
         int k = 0;
         for(int n = 1; n < lines.size(); n++)
         {
-            String element[] = lines.get(n).split(",");
+            String element[] = lines.get(n).split(",|;");
             result[k] = element[index];
             k++;
         }
@@ -108,7 +108,7 @@ public class CsvReader
     }
 
     public String[] select(int index){
-        return lines.get(index).split(",");
+        return lines.get(index).split(",|;");
     }
 
     public void close()
@@ -120,7 +120,7 @@ public class CsvReader
     {
         int index = 0;
         if(lines != null && lines.size() > 0) {
-            String header[] = lines.get(0).split(",");
+            String header[] = lines.get(0).split(",|;");
             for (int n = 0; n < header.length; n++) {
                 if (header[n].equals(element)) {
                     index = n;

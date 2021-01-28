@@ -209,7 +209,7 @@ public class Menu {
         if (viewType == type_craft) {
             menuDraw(screen);
             if (craft.pots.isEmpty())
-                Game.gui.draw_string(screen, "nothing to craft", 60, 50, 15);
+                Game.gui.draw_string(screen, "nothing to craft", 60, 20, 12);
         }
     }
 

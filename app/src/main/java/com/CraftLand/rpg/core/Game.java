@@ -260,14 +260,6 @@ public class Game
         if (size != 0) {
             int hp = csvMob.select_int(name, "hp");
             switch (name) {
-                case Resource.mob_Ant:
-                    mob = new Mob(name, size, x, y, hp);
-                    mob.enableRotationDirection = true;
-                    break;
-                case Resource.mob_Cockroach:
-                    mob = new Mob(name, size, x, y, hp);
-                    mob.enableRotationDirection = true;
-                    break;
                 case Resource.mob_Slime:
                     mob = new Mob(name, size, x, y, hp) {
                         @Override
@@ -276,33 +268,6 @@ public class Game
                         }
                     };
                     mob.particles_blood.setColor(0, 0, 255);
-                    break;
-                case Resource.mob_Slime_Green:
-                    mob = new Mob(name, size, x, y, hp) {
-                        @Override
-                        public void animation_Move() {
-                            animationSet(4, 2, size, 100, true);
-                        }
-                    };
-                    mob.particles_blood.setColor(0, 255, 0);
-                    break;
-                case Resource.mob_Slime_Red:
-                    mob = new Mob(name, size, x, y, hp) {
-                        @Override
-                        public void animation_Move() {
-                            animationSet(4, 2, size, 100, true);
-                        }
-                    };
-                    mob.particles_blood.setColor(255, 0, 0);
-                    break;
-                case Resource.mob_Slime_Ice:
-                    mob = new Mob(name, size, x, y, hp) {
-                        @Override
-                        public void animation_Move() {
-                            animationSet(4, 2, size, 100, true);
-                        }
-                    };
-                    mob.particles_blood.setColor(45, 182, 215);
                     break;
                 case Resource.mob_DarkPhantom:
                     mob = new Mob(name, size, x, y, hp) {
@@ -331,11 +296,6 @@ public class Game
                 case Resource.mob_Plant:
                     mob = new Mob(name, size, x, y, hp);
                     mob.particles_blood.setColor(0, 255, 0);
-                    break;
-                case Resource.mob_EvilFluffy:
-                    mob = new Mob(name, size, x, y, hp);
-                    mob.particles_blood.setColor(0, 255, 0);
-                    Texture texture_bullet = new Texture(Resource.assets_Effects + "fireball.png");
                     break;
                 case Resource.NM_SpiderQueen:
                     mob = new SpiderQueen(size, x, y);
