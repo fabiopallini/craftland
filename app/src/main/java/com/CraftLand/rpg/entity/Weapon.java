@@ -47,7 +47,6 @@ public class Weapon extends Object
     private Texture texture_bullet;
     private int bulletSpeed;
     private float bulletRotation;
-    private boolean isAnimated;
     private boolean isRanged;
     private Sound sound;
     private Sound sound_bullet;
@@ -61,7 +60,6 @@ public class Weapon extends Object
         obj_hitEffects = new ArrayList<>();
         hitEffectRow = 1;
         hitEffectSize = 16;
-        isAnimated = false;
         isRanged = false;
         weaponParser(name);
     }
@@ -89,7 +87,7 @@ public class Weapon extends Object
                     !tileCollision(b.centerX(), b.centerY(), Tile.Water_header) &&
                     !tileCollision(b.centerX(), b.centerY(), Tile.Lava) &&
                     !tileCollision(b.centerX(), b.centerY(), Tile.Lava_header)) {
-                if(name.equals(Resource.Gun_RocketLauncher)) {
+                if(name.equals(Resource.RocketLauncher)) {
                     Game.setTileBlock(b.centerX() / Tile.SIZE, b.centerY() / Tile.SIZE, Tile.Ground);
                     Render.camera.shake();
                 }
@@ -157,26 +155,7 @@ public class Weapon extends Object
                 sound.play();
             }
             attack = true;
-            if(isAnimated) {
-                switch (player.FACE_TO) {
-                    case Action.WALK_DOWN:
-                        animationSet(2, 2, 32, 0, false);
-                        break;
-                    case Action.WALK_UP:
-                        animationSet(1, 2, 32, 0, false);
-                        break;
-                    case Action.WALK_LEFT:
-                        animationSet(2, 1, 32, 0, false);
-                        break;
-                    case Action.WALK_RIGHT:
-                        animationSet(1, 1, 32, 0, false);
-                        break;
-                }
-            }
             bulletRotation = rotation;
-            if(isAnimated){
-                rotation = 0;
-            }
             if(!isRanged || useAmmo(inventory)) {
                 sound.play();
                 Bullet b = new Bullet(texture_bullet, position.X + (width / 3), position.Y + (height / 3),
@@ -211,9 +190,7 @@ public class Weapon extends Object
         Item item = null;
         if(name.startsWith("Bow"))
             item = inventory.getItem(Resource.Ammo_Arrow);
-        if(name.startsWith("Gun"))
-            item = inventory.getItem(Resource.Ammo_Bullet);
-        if(name.equals(Resource.Gun_RocketLauncher))
+        if(name.equals(Resource.RocketLauncher))
             item = inventory.getItem(Resource.Ammo_Rocket);
 
         if (item != null) {
@@ -254,18 +231,12 @@ public class Weapon extends Object
             texture_bullet = new Texture(Resource.assets_Effects + "bullet_1.png");
             sound = Game.sfx.load("Sword.ogg");
         }
-        if(name.startsWith("Gun")) {
-            if(name.equals(Resource.Gun_RocketLauncher)){
-                texture_bullet = new Texture(Resource.assets_Effects + "rocket.png");
-                sound = Game.sfx.load("Rocket.ogg");
-                hitEffectRow = 2;
-                hitEffectSize = 32;
-            }else{
-                texture_bullet = new Texture(Resource.assets_Effects + "bullet_4.png");
-                sound = Game.sfx.load("Shoot.ogg");
-            }
+        if(name.startsWith("RocketLauncher")) {
+            texture_bullet = new Texture(Resource.assets_Effects + "rocket.png");
+            sound = Game.sfx.load("Rocket.ogg");
+            hitEffectRow = 2;
+            hitEffectSize = 32;
             isRanged = true;
-            isAnimated = true;
         }
         if(name.startsWith("Bow")){
             texture_bullet = new Texture(Resource.assets_Effects + "arrow.png");

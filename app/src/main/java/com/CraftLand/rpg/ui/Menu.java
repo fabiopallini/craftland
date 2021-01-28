@@ -70,7 +70,7 @@ public class Menu {
             if (Render.pause)
             {
                 if (buttonInventory.isUp()) {
-                    if (viewType == type_invetory)
+                    if (viewType == type_invetory || viewType == type_craft)
                         closeInventory();
                 }
                 if (buttonCraft.isUp()) {
@@ -282,6 +282,7 @@ public class Menu {
     private void closeInventory() {
         Render.pause = false;
         buttonInventory.texture = texture_backPackClose;
+        buttonCraft.texture = texture_saw;
         viewType = 0;
         clean();
     }

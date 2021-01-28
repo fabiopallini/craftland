@@ -18,8 +18,7 @@ public class Resource
     public final static String Sword_Bronze = "Sword_Bronze";
     public final static String Sword_Iron = "Sword_Iron";
     public final static String Sword_Gold = "Sword_Gold";
-    public final static String Gun_1 = "Gun_1";
-    public final static String Gun_RocketLauncher = "Gun_RocketLauncher";
+    public final static String RocketLauncher = "RocketLauncher";
     public final static String Bow_Wood = "Bow_Wood";
     public final static String Bow_Iron = "Bow_Iron";
     public final static String Bow_Gold = "Bow_Gold";

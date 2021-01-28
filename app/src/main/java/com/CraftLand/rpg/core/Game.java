@@ -28,7 +28,6 @@ import java.util.List;
 
     /* TODO
         - tasto pickaxe non funziona quando ci si muove
-        - fix lancia razzi rotation
     */
 
 public class Game
@@ -83,7 +82,7 @@ public class Game
         menu.inventory.addItem(Resource.Bow_Wood, 1);
         menu.inventory.addItem(Resource.Sword_Wood, 1);
         menu.inventory.addItem(Resource.Boomerang_Wood, 1);
-        menu.inventory.addItem(Resource.Gun_RocketLauncher, 1);
+        menu.inventory.addItem(Resource.RocketLauncher, 1);
         menu.inventory.addItem(Resource.Water, 10);
         menu.inventory.addItem(Resource.SeedCarrot, 10);
         menu.inventory.addItem(Resource.Cherry, 10);
@@ -91,7 +90,7 @@ public class Game
         menu.inventory.addItem(Resource.Bomb, 10);
         //Game.stage.addObject(Game.makeMob(Resource.NM_GiantSpider, 150, 150));
 
-        changeMap("Dungeon_0");
+        changeMap("map_0");
     }
 
     public void update()
@@ -114,7 +113,7 @@ public class Game
             //change map
             if(tileCollision(player, 0, Tile.Exit)) {
                 stage.clear();
-                changeMap("Dungeon_1");
+                changeMap("map_1");
             }
         }
         else
