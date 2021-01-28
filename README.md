@@ -1,6 +1,6 @@
 # craftland
-Java + OpenGL Android Game
-This game is still in development 
+Java + OpenGL Android Game  
+This game is still in development
 
 ![screen](https://user-images.githubusercontent.com/8449266/106069033-01070c00-6102-11eb-8483-de7b5cbff604.png)
 
